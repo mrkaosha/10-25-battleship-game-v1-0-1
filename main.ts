@@ -10,7 +10,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     grid.move(cursor, 0, -1)
     grid.place(shadowCursor, tiles.getTileLocation(grid.spriteCol(cursor), grid.spriteRow(cursor) + 1))
 })
-function updatePX(whichPlayer: string) {
+function updatePX (whichPlayer: string) {
     if (whichPlayer == "Player1") {
         moveBoat(boatSpriteArrayP1[currentBoat], boatRotateArrayP1)
         if (isOverlapping(boatSpriteArrayP1)) {
@@ -41,7 +41,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         turnBoat(currentBoat, boatRotateArrayP2)
     }
 })
-function makeBoatVisible(boatArray: Sprite[]) {
+function makeBoatVisible (boatArray: Sprite[]) {
     for (let currentBoatSprite of boatArray) {
         currentBoatSprite.setFlag(SpriteFlag.Invisible, false)
     }
@@ -64,7 +64,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     grid.move(cursor, -1, 0)
     grid.place(shadowCursor, tiles.getTileLocation(grid.spriteCol(cursor) + 1, grid.spriteRow(cursor)))
 })
-function switchPlayer() {
+function switchPlayer () {
     if (moveBoatFlag == 2) {
         cursor.setFlag(SpriteFlag.Invisible, false)
     }
@@ -75,8 +75,8 @@ function switchPlayer() {
         }
     } else {
         currentPlayer = "Player1"
-        for (let boatIterator of boatSpriteArrayP2) {
-            makeBoatInvisible(boatIterator)
+        for (let boatIterator2 of boatSpriteArrayP2) {
+            makeBoatInvisible(boatIterator2)
         }
     }
 }
@@ -85,7 +85,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     grid.move(cursor, 1, 0)
     grid.place(shadowCursor, tiles.getTileLocation(grid.spriteCol(cursor) + -1, grid.spriteRow(cursor)))
 })
-function moveBoat(boatArray: any[], boatRotateArray: string[]) {
+function moveBoat (boatArray: any[], boatRotateArray: string[]) {
     makeBoatVisible(boatArray)
     if (grid.spriteRow(cursor) >= 8 - boatArray.length && boatRotateArray[currentBoat] == "up") {
         if (rotateFlag != "nothing") {
@@ -103,19 +103,19 @@ function moveBoat(boatArray: any[], boatRotateArray: string[]) {
     }
     cursor.setFlag(SpriteFlag.Invisible, true)
     iterator = 0
-    for (let currentBoatSprite of boatArray) {
+    for (let currentBoatSprite2 of boatArray) {
         if (boatRotateArray[currentBoat] == "up") {
-            grid.place(currentBoatSprite, tiles.getTileLocation(grid.spriteCol(cursor), grid.spriteRow(cursor) + iterator))
+            grid.place(currentBoatSprite2, tiles.getTileLocation(grid.spriteCol(cursor), grid.spriteRow(cursor) + iterator))
         } else {
-            grid.place(currentBoatSprite, tiles.getTileLocation(grid.spriteCol(cursor) + iterator, grid.spriteRow(cursor)))
+            grid.place(currentBoatSprite2, tiles.getTileLocation(grid.spriteCol(cursor) + iterator, grid.spriteRow(cursor)))
         }
         iterator += 1
     }
 }
-function isHitOrMiss(enemyBoats: Sprite[][]) {
+function isHitOrMiss (enemyBoats: Sprite[][]) {
     for (let index = 0; index <= 2; index++) {
-        for (let currentBoatSprite of enemyBoats[index]) {
-            if (grid.spriteCol(currentBoatSprite) == grid.spriteCol(cursor) && grid.spriteRow(currentBoatSprite) == grid.spriteRow(cursor)) {
+        for (let currentBoatSprite3 of enemyBoats[index]) {
+            if (grid.spriteCol(currentBoatSprite3) == grid.spriteCol(cursor) && grid.spriteRow(currentBoatSprite3) == grid.spriteRow(cursor)) {
                 boomSprite = sprites.create(img`
                     . . . . 2 2 2 2 2 2 2 2 . . . . 
                     . . . 2 4 4 4 5 5 4 4 4 2 2 2 . 
@@ -164,7 +164,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     grid.move(cursor, 0, 1)
     grid.place(shadowCursor, tiles.getTileLocation(grid.spriteCol(cursor), grid.spriteRow(cursor) + -1))
 })
-function initP2() {
+function initP2 () {
     boatSpriteArrayP2 = [[sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . f f f f f f . f f f f f f . 
@@ -251,7 +251,7 @@ function initP2() {
         . . . . . . . f f f . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Boat1)], [
-        sprites.create(img`
+    sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . f f f f f f . f f f f f f . 
         . f f 3 3 3 3 f f f 3 3 3 3 f f 
@@ -269,7 +269,7 @@ function initP2() {
         . . . . . . . f f f . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Boat2),
-        sprites.create(img`
+    sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . f f f f f f . f f f f f f . 
         . f f 3 3 3 3 f f f 3 3 3 3 f f 
@@ -287,7 +287,7 @@ function initP2() {
         . . . . . . . f f f . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Boat2),
-        sprites.create(img`
+    sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . f f f f f f . f f f f f f . 
         . f f 3 3 3 3 f f f 3 3 3 3 f f 
@@ -305,7 +305,7 @@ function initP2() {
         . . . . . . . f f f . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Boat2),
-        sprites.create(img`
+    sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . f f f f f f . f f f f f f . 
         . f f 3 3 3 3 f f f 3 3 3 3 f f 
@@ -325,27 +325,27 @@ function initP2() {
         `, SpriteKind.Boat2)
     ]]
     boatRotateArrayP2 = ["up", "up", "up"]
-    for (let boatIterator of boatSpriteArrayP2) {
-        makeBoatInvisible(boatIterator)
+    for (let boatIterator3 of boatSpriteArrayP2) {
+        makeBoatInvisible(boatIterator3)
     }
 }
-function makeBoatInvisible(boatArray: Sprite[]) {
-    for (let currentBoatSprite of boatArray) {
-        currentBoatSprite.setFlag(SpriteFlag.Invisible, true)
+function makeBoatInvisible (boatArray: Sprite[]) {
+    for (let currentBoatSprite4 of boatArray) {
+        currentBoatSprite4.setFlag(SpriteFlag.Invisible, true)
     }
 }
-function turnBoat(boatNum: number, boatRotateArray: string[]) {
+function turnBoat (boatNum: number, boatRotateArray: string[]) {
     if (boatRotateArray[boatNum] == "up") {
         boatRotateArray[boatNum] = "sideways"
     } else {
         boatRotateArray[boatNum] = "up"
     }
 }
-function isOverlapping(boatSpriteArrayPX: Sprite[][]) {
-    for (let index = 0; index <= currentBoat - 1; index++) {
-        for (let previousBoatSprite of boatSpriteArrayPX[index]) {
-            for (let currentBoatSprite of boatSpriteArrayPX[currentBoat]) {
-                if (grid.spriteCol(previousBoatSprite) == grid.spriteCol(currentBoatSprite) && grid.spriteRow(previousBoatSprite) == grid.spriteRow(currentBoatSprite)) {
+function isOverlapping (boatSpriteArrayPX: Sprite[][]) {
+    for (let index2 = 0; index2 <= currentBoat - 1; index2++) {
+        for (let previousBoatSprite of boatSpriteArrayPX[index2]) {
+            for (let currentBoatSprite5 of boatSpriteArrayPX[currentBoat]) {
+                if (grid.spriteCol(previousBoatSprite) == grid.spriteCol(currentBoatSprite5) && grid.spriteRow(previousBoatSprite) == grid.spriteRow(currentBoatSprite5)) {
                     return 1
                 }
             }
@@ -457,7 +457,7 @@ boatSpriteArrayP1 = [[sprites.create(img`
     . . . b b 5 5 5 5 5 5 b b . . . 
     . . . . . b b b b b b . . . . . 
     `, SpriteKind.Boat1)], [
-    sprites.create(img`
+sprites.create(img`
     . . . . . b b b b b b . . . . . 
     . . . b b 9 9 9 9 9 9 b b . . . 
     . . b b 9 9 9 9 9 9 9 9 b b . . 
@@ -475,7 +475,7 @@ boatSpriteArrayP1 = [[sprites.create(img`
     . . . b b 5 5 5 5 5 5 b b . . . 
     . . . . . b b b b b b . . . . . 
     `, SpriteKind.Boat2),
-    sprites.create(img`
+sprites.create(img`
     . . . . . b b b b b b . . . . . 
     . . . b b 9 9 9 9 9 9 b b . . . 
     . . b b 9 9 9 9 9 9 9 9 b b . . 
@@ -493,7 +493,7 @@ boatSpriteArrayP1 = [[sprites.create(img`
     . . . b b 5 5 5 5 5 5 b b . . . 
     . . . . . b b b b b b . . . . . 
     `, SpriteKind.Boat2),
-    sprites.create(img`
+sprites.create(img`
     . . . . . b b b b b b . . . . . 
     . . . b b 9 9 9 9 9 9 b b . . . 
     . . b b 9 9 9 9 9 9 9 9 b b . . 
@@ -511,7 +511,7 @@ boatSpriteArrayP1 = [[sprites.create(img`
     . . . b b 5 5 5 5 5 5 b b . . . 
     . . . . . b b b b b b . . . . . 
     `, SpriteKind.Boat2),
-    sprites.create(img`
+sprites.create(img`
     . . . . . b b b b b b . . . . . 
     . . . b b 9 9 9 9 9 9 b b . . . 
     . . b b 9 9 9 9 9 9 9 9 b b . . 
@@ -530,8 +530,8 @@ boatSpriteArrayP1 = [[sprites.create(img`
     . . . . . b b b b b b . . . . . 
     `, SpriteKind.Boat2)
 ]]
-for (let boatIterator of boatSpriteArrayP1) {
-    makeBoatInvisible(boatIterator)
+for (let boatIterator4 of boatSpriteArrayP1) {
+    makeBoatInvisible(boatIterator4)
 }
 moveBoatFlag = 1
 cursor = sprites.create(img`
